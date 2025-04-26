@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dayu Pangestu - Web Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/jpg" sizes="32x32"
+    href="icon.jpg">
+    
+    <style>
+      /* Global Styles */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --text-color: #333;
+    --text-light: #777;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f9f9f9;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+}
+
+/* Navigation */
+#navbar {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+#navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 20px 0;
+}
+
+#navbar ul li {
+    margin: 0 15px;
+}
+
+#navbar ul li a {
+    color: var(--dark-color);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+#navbar ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 100px 50px 50px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+.hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-weight: 400;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* About Section */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+/* Skills Section */
+.skills-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.skill-card {
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.skill-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Portfolio Section */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.portfolio-item {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.portfolio-item h3 {
+    padding: 20px;
+    font-size: 1.3rem;
+}
+
+.portfolio-item p {
+    padding: 0 20px 20px;
+}
+
+/* Contact Section */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info {
+    flex: 1;
+    padding: 40px;
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    color: var(--light-color);
+}
+
+.contact-info i {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.social-links {
+    margin-top: 30px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 15px;
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.contact-form {
+    flex: 1;
+    padding: 40px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.contact-form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 120px 20px 50px;
+    }
+    
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 50px;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-info, .contact-form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .section h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .skills-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 576px) {
+    #navbar ul {
+        flex-wrap: wrap;
+    }
+    
+    #navbar ul li {
+        margin: 5px 10px;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    .section h2 {
+        font-size: 1.8rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Dayu Pangestu</h1>
+            <h2>Freelance Web Developer</h2>
+            <p>Spesialis dalam pengembangan website responsif menggunakan HTML, CSS, dan JavaScript</p>
+            <a href="#contact" class="cta-button">Hubungi Saya</a>
+        </div>
+        <div class="hero-image">
+            <img src="logo.jpg" alt="Foto Dayu Pangestu">
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>Tentang Saya</h2>
+        <div class="about-content">
+            <p>Halo! Saya Dayu Pangestu, seorang freelance web developer dengan pengalaman 3 tahun dalam membangun website yang indah dan fungsional. Saya berspesialisasi dalam front-end development dengan fokus pada teknologi dasar web: HTML, CSS, dan JavaScript.</p>
+            <p>Saya percaya bahwa website yang baik harus cepat, mudah digunakan, dan terlihat bagus di semua perangkat. Saya selalu berusaha untuk menciptakan pengalaman pengguna yang luar biasa melalui kode yang bersih dan desain yang intuitif.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Keahlian Teknis</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <i class="fab fa-html5"></i>
+                <h3>HTML5</h3>
+                <p>Struktur semantik yang bersih dan aksesibilitas yang optimal</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS3</h3>
+                <p>Desain responsif, animasi, dan layout modern dengan Flexbox/Grid</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+                <p>Interaktivitas website, manipulasi DOM, dan dasar-dasar ES6+</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="profile1.jpg" alt="proyek 1">
+                <h3>Website Perusahaan</h3>
+                <p>Website responsif untuk perusahaan lokal dengan fitur kontak form</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="profile2.jpg" alt="proyek 2">
+                <h3>Landing Page Produk</h3>
+                <p>Halaman penjualan dengan animasi CSS dan validasi form JavaScript</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="profile3.jpg" alt="Proyek 3">
+                <h3>Blog Pribadi</h3>
+                <p>Blog statis dengan desain minimalis dan navigasi yang intuitif</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Hubungi Saya</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Informasi Kontak</h3>
+                <p><i class="fas fa-envelope"></i> dayupangestu44@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +62 8161 553 35956</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="https://id.linkedin.com/in/dayu-pangestu-b00345355"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/dayu99gaming/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Nama Anda" required>
+                <input type="email" placeholder="Email Anda" required>
+                <textarea placeholder="Pesan Anda" required></textarea>
+                <button type="submit">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Dayu Pangestu - Freelance Web Developer</p>
+    </footer>
+
+    <script>// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Sticky navigation
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    } else {
+        navbar.style.background = 'white';
+        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    }
+});
+
+// Form submission
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = this.querySelector('input[type="text"]').value;
+        const email = this.querySelector('input[type="email"]').value;
+        const message = this.querySelector('textarea').value;
+        
+        // Here you would typically send the data to a server
+        console.log({ name, email, message });
+        
+        // Show success message
+        alert('Terima kasih! Pesan Anda telah dikirim. Saya akan segera menghubungi Anda kembali.');
+        
+        // Reset form
+        this.reset();
+    });
+}
+
+// Animation on scroll
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.skill-card, .portfolio-item');
+    
+    elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+        
+        if (elementPosition < screenPosition) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
+}
+
+// Set initial state for animation
+document.addEventListener('DOMContentLoaded', function() {
+    const skills = document.querySelectorAll('.skill-card');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    skills.forEach(skill => {
+        skill.style.opacity = '0';
+        skill.style.transform = 'translateY(20px)';
+        skill.style.transition = 'all 0.5s ease';
+    });
+    
+    portfolioItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        item.style.transition = 'all 0.5s ease';
+    });
+    
+    // Trigger animation on load for elements in view
+    animateOnScroll();
+});
+
+window.addEventListener('scroll', animateOnScroll);</script>
+</body>
+</html>
